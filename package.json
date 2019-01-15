@@ -16,7 +16,7 @@
     "gulp-debug": "^2.1.0",
     "gulp-eslint": "^0.12.0",
     "gulp-mocha": "^2.0.1",
-    "gulp-raster": "^0.1.0",
+    "gulp-raster": "^0.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-rimraf": "^0.1.1",
     "gulp-util": "^3.0.4",
@@ -34,7 +34,7 @@
   "scripts": {
     "postinstall": "npm run prepare:full",
     "prepare:full": "npm run internal:images && npm run internal:tns-platforms-add && npm run prepare",
-    "prepare": "gulp cleanCompile && npm run internal:npm-install && npm run internal:tns-prepare && npm run internal:bump-predefined && npm run internal:copy-hacks",
+    "prepare": "gulp cleanCompile && npm run internal:npm-install && npm run internal:tns-prepare && npm run internal:bump-predefined",
     "bump": "node bump-version.js",
     "ios:open": "open ./rekapp/platforms/ios/rekapp.xcodeproj",
     "ios:emulate": "cd rekapp && tns emulate ios --device iPhone-6",

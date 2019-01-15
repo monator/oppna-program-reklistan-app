@@ -2,7 +2,7 @@
 
 //import {inspect} from './debug';
 import RemoteImages from './remoteimages';
-import fs from 'file-system';
+import * as fs from 'file-system';
 import {android} from 'application';
 
 const defaultDiacriticsRemovalap = [

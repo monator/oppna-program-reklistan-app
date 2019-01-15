@@ -1,7 +1,7 @@
 'use strict';
 
-import http from 'http';
-import fs from 'file-system';
+import * as http from 'http';
+import * as fs from 'file-system';
 import ContentItem from '../model/ContentItem';
 import ResourceArticle from '../model/ResourceArticle';
 import NewsArticle from '../model/NewsArticle';
@@ -232,7 +232,7 @@ function findLinkToArticle(content) {
 }
 
 function createDataLocation(locations, forceDownload) {
-	const urlPart1 = `${global.REK.preferences.host}/api/jsonws/skinny-web.skinny/get-skinny-journal-articles/company-id/${locations.companyId}/group-name/${locations.groupName}/ddm-structure-id/`;
+	const urlPart1 = `${global.REK.preferences.host}/api/jsonws/skinny.skinny/get-skinny-journal-articles/company-id/${locations.companyId}/group-name/${locations.groupName}/ddm-structure-id/`;
 	const urlPart2 = `/locale/${locations.locale}`;
 
 	global.REK.news = {
@@ -266,26 +266,26 @@ function createDataLocation(locations, forceDownload) {
 		templates: [{
 			name:          'drugs',
 			localFileName: 'details-drugs.hbs',
-			url:           global.REK.preferences.host + '/reklistan-theme/handlebars/details-drugs.hbs',
+			url:           global.REK.preferences.host + '/o/reklistan-dxp-theme/handlebars/details-drugs.hbs',
 			download:      forceDownload
 		}, {
 			name:          'advice',
 			localFileName: 'details-advice.hbs',
-			url:           global.REK.preferences.host + '/reklistan-theme/handlebars/details-advice.hbs',
+			url:           global.REK.preferences.host + '/o/reklistan-dxp-theme/handlebars/details-advice.hbs',
 			download:      forceDownload
 		}],
 
 		css: [{
 			name:          'custom',
 			localFileName: 'custom.css',
-			url:           global.REK.preferences.host + '/reklistan-theme/css/custom.css?browserId=other&themeId=reklistantheme_WAR_reklistantheme&languageId=en_US&b=6210',
+			url:           global.REK.preferences.host + '/o/reklistan-dxp-theme/css/main.css?browserId=other&themeId=reklistandxptheme_WAR_reklistandxptheme&languageId=en_US&b=7010',
 			download:      forceDownload
 		}],
 
 		inAppResources: [{
 			name:          'appDetailsJs',
 			localFileName: 'app-details.js',
-			url:           global.REK.preferences.host + '/reklistan-theme/resources/app-details.js',
+			url:           global.REK.preferences.host + '/o/reklistan-dxp-theme/resources/app-details.js',
 			download:      forceDownload
 		}]
 	};
@@ -324,6 +324,7 @@ const DataLoader = {
 				})
 				.then(data => {
 					try {
+						debug('Starting to collect data from server');
 						dataLocation = data.content.toJSON();
 						appSettings.setNumber('companyId', dataLocation.companyId);
 						appSettings.setString('groupName', dataLocation.groupName);

@@ -1,8 +1,8 @@
 'use strict';
 
 //import {inspect, debug} from './debug';
-import http from 'http';
-import fs from 'file-system';
+import * as http from 'http';
+import * as fs from 'file-system';
 import {debug} from './debug';
 
 const IMAGE_FOLDER = fs.knownFolders.documents().getFolder('images');
